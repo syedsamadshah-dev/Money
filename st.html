@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neon Glass Expense Tracker</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0ff">
+</head>
+<body>
+
+<canvas id="particleCanvas"></canvas>
+
+<div class="app">
+  <div class="header">🌌 PrismBudget</div>
+
+  <input type="number" id="amount" placeholder="Amount (Rs)">
+  <select id="period">
+    <option value="Day">Day</option>
+    <option value="Month">Month</option>
+    <option value="Year">Year</option>
+  </select>
+  <input type="text" id="reason" placeholder="Reason">
+  <input type="date" id="date">
+  <button id="addBtn">Add Expense</button>
+
+  <div class="totals">
+    Daily: Rs <span id="dayTotal">0</span><br>
+    Monthly: Rs <span id="monthTotal">0</span><br>
+    Yearly: Rs <span id="yearTotal">0</span>
+  </div>
+
+  <div id="expenseList"></div>
+
+  <canvas id="summaryChart"></canvas>
+  <canvas id="monthlyChart"></canvas>
+</div>
+
+<script src="script.js"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js')
+    .then(() => console.log('Service Worker Registered'))
+    .catch(err => console.error('Service Worker registration failed:', err));
+}
+</script>
+
+</body>
+</html>
